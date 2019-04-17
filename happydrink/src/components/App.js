@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from '../assets/logo.svg';
 import '../css/App.css';
-import { establishments } from './establishments/fixtures'
+import { establishments } from './establishments/fixtures';
+import Establishment from './establishments/Establishment';
 
 
 // Un Component implémente la méthode render() et reçoit en paramètre ses props
@@ -9,13 +10,45 @@ import { establishments } from './establishments/fixtures'
 
 class App extends Component {
 
-    // Notre fameuse méthode render()
-    // On utilise dans cette méthode la syntaxe JSX
+  constructor(props) {
+      // Ne pas oublier d'appeler le constructeur père ! (Obligatoire)
+      super(props); 
+      // On définit le state de notre component que l'on hérite de la classe "Component"
+      // Cela remplace la fonction "getInitialState"
+      this.state = {
+          pseudo : "Inconnu"
+      }
+  }
+
+  // On définit la fonction appelée lors d'un clic sur le lien "Changer le pseudo !"
+  // la syntaxe  " nomFonction = () => {} " nous permet de conserver le contexte `this` du scope courant. (Ici, la classe App)
+  randomPseudo = () => {
+    // have fun
+    let randomPseudo = ""
+    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+    const size = Math.floor(Math.random() * 10) + 5
+    for( let i=0; i < size; i++){
+        randomPseudo += possible.charAt(Math.floor(Math.random() * possible.length ))
+    }
+    // On met à jour le state via la fonction "setState" héritée de la classe Component
+    this.setState({
+      pseudo : randomPseudo
+    })
+  }
+
+
+
+  // Notre fameuse méthode render()
+  // On utilise dans cette méthode la syntaxe JSX
   render() {
 
 
     const listEstablishment = establishments.map ( (establishment) => { // La méthode map() crée un nouveau tableau composé des images des éléments d’un tableau par une fonction donnée en argument. https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/map . Ici, avec la fonction (establishment) => {} (notation es6), nous retournons l’élément JSX <li ... > ... Ce qui permet par la suite d’afficher les établissements sous forme de liste avec la variable { listEstablishment }.
-      return (
+        return (
+            <Establishment
+                key={ establishment.id}  
+                establishment={establishment} // on n'a pas oublié la props "establishment" :)
+            />,
 
             <li
                 key = { establishment.id } // L'attribut "key" permet à React d'identifier les éléments. Cela améliore les performances lors de l'ajout, la modification et la suppression d'un élément.
