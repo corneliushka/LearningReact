@@ -101,3 +101,90 @@ Et les inclure dans notre component principal HelloWorld() :
             </div>
         )
     }
+
+
+- Une fonction component doit retourner un seul élément. 
+
+#### Le JavaScript dans JSX 
+
+On peut insérer des réelles expressions .js dans le code JSX. Cela ressemble à cela : 
+
+        function SubmitButton() {
+            var buttonLabel = "Submit";
+            return (
+                <button>{buttonLabel}</button>
+            );
+        }
+
+A ne pas oublier que cela sera compilé dans le Javascript, et que le JS doit avoir une expression a l'intérieur qui produit une valeur. Les déclarations ne produisent pas de valeur et ne peuvent être utilisées dans le JSX. 
+
+Exemples d'expressions:
+    1 + 2
+    buttonLabel
+    aFunctionCall()
+    aFunctionName
+
+Exemples de déclarations:
+    var a = 5
+    if(true) { 17;}
+    while(i < 7) { i++ }
+
+
+**Alors commment utiliser le "If" dans JSX ?**
+
+- Tout d'abord on a les opérations ternaires :
+
+    function ValidIndicator() {
+        var isValid = true;
+        return (
+            <span>
+                {isValid ? 'valid' : 'not valid'} 
+            </span>
+        )
+    }
+
+
+- Ensuite on a les opérateurs booléens tels que && : 
+    
+    function ValidIndicator() {
+        var isValid = true;
+        return (
+            <span>
+                {isValid && 'valid'}
+                {!isValid && 'not valid'}
+            </span>
+        );
+    }
+
+
+**Commentaires dans JSX**
+
+Il faut les mettres dans un block JSX, tel que : 
+    
+    function ValidIndicator() {
+        var isValid = true;
+        return (
+            <span>
+                {/* voici un commentaire*/}
+                {isValid && 'valid'}
+                {!isValid && 'not valid'}
+                {
+                    // on peut faire ceci pour
+                    // le multi lignes
+                }
+            </span>
+        );
+    }
+
+**Capitaliser les noms des components**
+
+Les componenets doivent commencer par une majuscule.
+EX :
+    UserList
+    Menu
+    SubmitButton
+    ...
+
+En JSX les componenets en minuscules sont des éléments l'HTML ou SVG.
+
+

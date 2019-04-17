@@ -3,12 +3,19 @@ import ReactDOM from 'react-dom';
 
 function HelloWorld() {
   return (
-    <div>
+      <div>
         <Hello/> <World/> ! 
-    </div>
-    );
+      </div>
+
+  );
 }
 
+/* function SubmitButton() {
+    var buttonLabel = "Submit";
+    return (
+        <button>{buttonLabel}</button>
+    );
+} */
 
 function Hello() {
     return (
@@ -22,7 +29,7 @@ function World() {
     )
 }
 
-
 ReactDOM.render(
     <HelloWorld/>,
-    document.querySelector('#root'));
+    document.querySelector('#root')
+);
