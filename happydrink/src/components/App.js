@@ -23,7 +23,7 @@ class App extends Component {
   // On définit la fonction appelée lors d'un clic sur le lien "Changer le pseudo !"
   // la syntaxe  " nomFonction = () => {} " nous permet de conserver le contexte `this` du scope courant. (Ici, la classe App)
   randomPseudo = () => {
-    // have fun
+    // (now, have fun they said...)
     let randomPseudo = ""
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     const size = Math.floor(Math.random() * 10) + 5
@@ -36,12 +36,9 @@ class App extends Component {
     })
   }
 
-
-
   // Notre fameuse méthode render()
   // On utilise dans cette méthode la syntaxe JSX
   render() {
-
 
     const listEstablishment = establishments.map ( (establishment) => { // La méthode map() crée un nouveau tableau composé des images des éléments d’un tableau par une fonction donnée en argument. https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/map . Ici, avec la fonction (establishment) => {} (notation es6), nous retournons l’élément JSX <li ... > ... Ce qui permet par la suite d’afficher les établissements sous forme de liste avec la variable { listEstablishment }.
         return (
