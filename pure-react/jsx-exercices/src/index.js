@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
         return (
             <div>
                 <span >
-                    <ValidIndicator/>
+                    <Greeting/>
                 </span>
 
                 <div className='book'>
@@ -34,8 +34,8 @@ import ReactDOM from 'react-dom';
         );
     }
 
-function ValidIndicator() {
-    var username = false;
+function Greeting() {
+    var username = null;
     return (
         <span>{username ? 'Hello, Corneliu' : 'Not logged In'}</span>
     );

@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import * as serviceWorker from './serviceWorker';
+
 
 function Tweet() {
     return (
@@ -33,15 +35,11 @@ function Avatar() {
 function NameWithHandle() {
     return (
         <span className="name-with-handle">
-            <span className="name">Your Name</span>
-            <span className="handle">@yourhandle</span>
+            <span className="name">Corneliu Gaina</span>
+            <span className="handle">@Corneliushka</span>
         </span>
     )
 }
-
-const Time = () => (
-    <span className="time">3h ago</span>
-);
 
 function Message() {
     return (
@@ -50,6 +48,10 @@ function Message() {
         </div>
     )
 }
+
+const Time = () => (
+    <span className="time">3h ago</span>
+);
 
 const ReplyButton = () => (
     <i className="fa fa-reply reply-button"/>
@@ -67,5 +69,8 @@ const MoreOptionsButton = () => (
     <i className="fa fa-ellipsis-h more-options-button"/>
 );
 
+
 ReactDOM.render(<Tweet/>,
     document.querySelector('#root'));
+
+serviceWorker.unregister();

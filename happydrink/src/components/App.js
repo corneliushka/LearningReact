@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../assets/logo.svg';
+import logo from '../assets/water.gif';
 import '../css/App.css';
 import { establishments } from './establishments/fixtures';
 import Establishment from './establishments/Establishment';
@@ -12,13 +12,22 @@ class App extends Component {
 
   constructor(props) {
       // Ne pas oublier d'appeler le constructeur père ! (Obligatoire)
-      super(props); 
+      super(props); // "super" n'est appellé que lorsqu'on a un constructeur
       // On définit le state de notre component que l'on hérite de la classe "Component"
       // Cela remplace la fonction "getInitialState"
-      this.state = {
+      this.state = { // this. peut être appellé à partir du moment que le state est initialisé
           pseudo : "Inconnu"
       }
   }
+  
+
+
+  incrementCounter = incrementValue => {
+    this.setState(prevstate => ({
+      counter: prevstate.counter + incrementValue
+    }))
+  }
+
 
   // On définit la fonction appelée lors d'un clic sur le lien "Changer le pseudo !"
   // la syntaxe  " nomFonction = () => {} " nous permet de conserver le contexte `this` du scope courant. (Ici, la classe App)
@@ -36,8 +45,8 @@ class App extends Component {
     })
   }
 
-  // Notre fameuse méthode render()
-  // On utilise dans cette méthode la syntaxe JSX
+    // Notre fameuse méthode render()
+    // On utilise dans cette méthode la syntaxe JSX
   render() {
 
     const listEstablishment = establishments.map ( (establishment) => { // La méthode map() crée un nouveau tableau composé des images des éléments d’un tableau par une fonction donnée en argument. https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/map . Ici, avec la fonction (establishment) => {} (notation es6), nous retournons l’élément JSX <li ... > ... Ce qui permet par la suite d’afficher les établissements sous forme de liste avec la variable { listEstablishment }.
@@ -64,11 +73,17 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to { this.props.title }</h2> 
+          <h2>Welcome "{ this.state.pseudo }" to { this.props.title }</h2> 
         </header>
-        <p className="App-intro">
+        <div className="App-intro">
+          {/* On appelle notre fonction lors du clic sur le lien */}
+          <p> 
+            <a onClick={this.randomPseudo} >Changer le pseudo !</a> 
+          </p>
+          <section>
           { listEstablishment }
-        </p>
+          </section>
+        </div>
       </div>
     );
   }

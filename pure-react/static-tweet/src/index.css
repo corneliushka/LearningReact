@@ -22,6 +22,9 @@ code {
   font-family: "Helvetica", arial, sans-serif;
   font-size: 14px;
   line-height: 18px;
+  border-radius: 0.4em;
+  margin: 0 auto;
+  margin-top: 1em;
 }
 
 .avatar {

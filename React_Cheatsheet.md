@@ -3,6 +3,10 @@
 Sources :  
 [Coursera : Learn Frontl-End React](https://www.coursera.org/learn/front-end-react/)
 
+Pre-requis VS Code: 
+- ES7 React/Redux/GraphQL/React-Native snippets
+- Sublime Babel
+
 ## 1.1 Initialisation et creation nouvel projet
 
 Stephings to install before using React (in folder) : 
@@ -18,6 +22,7 @@ et ce, afin d'importer dans le dossier les packages npm installés
 Pour lancer le projet : *$ npm start*
 
 ## 1.2 Le JSX et syntaxe React
+
 
 ### 1.2.1 Le ReactDOM.render 
 
@@ -187,4 +192,53 @@ EX :
 
 En JSX les componenets en minuscules sont des éléments l'HTML ou SVG.
 
+### 1.3 Création d'un component 
 
+Lorsqu'on parle de la hiérarchie des components, procède-t-on Top-Down ou Bottom-Up ? 
+
+Pour les petits projets (lorsqu'un parent a quelques enfants) c'est l'approche Top-Down à privilégier car le plus facile.
+
+Pour les projets plus complexes, faire du Bottom-Up car permet de tester au fur et à mesure ses components s'ils sont réactifs. Par induction, leur combinaison fait grossir le projet. 
+
+<!-- Quand vous construisez un component, posez-vous ces questions :
+
+- [ ] Ma variable m’est passée par mon parent via les props ? Ne la mettez pas dans le state
+
+- [ ] Ma variable peut être créée à partir d’autres variables du state ou des props ? Ne la mettez pas dans le state
+
+- [ ] Ma variable ne remplie aucun des cas ci-dessus ? Alors sa place est surement dans le state
+ -->
+
+
+Le .CSS qu'on importe dans un fichier parent peut etre visible dans la console -> elements -> dans la balise <head> il y a <style></style> (vite, mais index.css est appelé dedans).
+
+
+### 1.3 Props - Arguments to Components
+
+Si le HTMl a ses attributs, les components React ont des props (= propriétés). 
+Des components React peuvent être écrits en fonctions. C'est donc naturel de penser qu'on peut penser des arguments à ces fonctions. 
+Les **props** sont des *arguments* aux components. 
+
+#### 1.3.1 Passer des props 
+
+- On passe un props appellé *name* avec la valeur string "Dave"
+    <Person name='Dave'/>
+
+- On passe un props *className* avec la valeur "person"
+
+    <div className='person'/>
+
+Les div sont auto-fermantes, chaque component peut etre auto-fermant, si'il n'a pas d'enfants. 
+
+Il est important de se rappeller que dans JS les brackets sont une expression, par une déclaration. Voici ce qu'on peut faire à l'intérieur des expressions JSX : 
+
+- Math, concatenation: {7 + 5} or {'Your' + 'Name'}
+- Function calls: {this.getFullName(person)}
+- Ternary (?) operator: {name === 'Dave' ? 'me' : 'not me'}
+- Boolean expressions: {isEnabled && 'enabled'}
+
+Ce qu'on ne peut pas faire : 
+
+- Define new variables with var
+- Use if, for, while, etc.
+- Define functions with function

@@ -9,7 +9,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background: linear-gradient(#9f05c5, #14194e);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,11 +24,16 @@
 }
 
 .establishment {
-  background-color    : rgb(255, 230, 0);
+  background-color    : rgb(255, 208, 0);
   padding             : 10px;
   margin              : 5px 30px;
   border-radius       : 12px;
   list-style          : none;
+}
+
+.buttons {
+  height: 20vh;
+  width: 20vh;
 }
 
 @keyframes App-logo-spin {

@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// import {duidHtml} from "duid";
+// const {DuidForm} = duidHtml.duidForms;
 
-function HelloWorld() {
-  return (
-      <div>
-        <Hello/> <World/> ! 
-      </div>
 
-  );
-}
+    function HelloWorld() {
+    return (
+        <div>
+            <Hello/> <World/> ! 
+        </div>
+    );
+    }
 
 /* function SubmitButton() {
     var buttonLabel = "Submit";
