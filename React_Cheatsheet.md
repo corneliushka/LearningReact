@@ -7,6 +7,15 @@ Pre-requis VS Code:
 - ES7 React/Redux/GraphQL/React-Native snippets
 - Sublime Babel
 
+## 0 Erreurs et autres galères 
+
+- ENOSPC, nombre de watches limités : https://github.com/gatsbyjs/gatsby/issues/11406
+
+- Pour faire une copie d'un folder pour bosser dedans, se mettre un niveau de folder au-dessus (parent) et exécuter dans le terminal : 
+    cp -a <nomfolderadupliquer> <nouvelnomfolder> && cd <nouvelnomfolder>
+    npm start 
+
+
 ## 1.1 Initialisation et creation nouvel projet
 
 Stephings to install before using React (in folder) : 
@@ -217,7 +226,11 @@ Le .CSS qu'on importe dans un fichier parent peut etre visible dans la console -
 
 Si le HTMl a ses attributs, les components React ont des props (= propriétés). 
 Des components React peuvent être écrits en fonctions. C'est donc naturel de penser qu'on peut penser des arguments à ces fonctions. 
-Les **props** sont des *arguments* aux components. 
+Les **props** sont des *arguments* / *parametres* que l'on passe a d'autres componenets. 
+Basiquement, l'esprit de React est de casser les choses en morceaux, cad en components, et de les utiliser quand l'on en a besoin. 
+Les props sont des caractéristiques définies que contiennent les components et elles sont accessibles ou envoyées lorsque requises.
+Les datas des props peuvent être de différentes natures : strings, fonctions, tableaux. 
+
 
 #### 1.3.1 Passer des props 
 
@@ -242,3 +255,18 @@ Ce qu'on ne peut pas faire :
 - Define new variables with var
 - Use if, for, while, etc.
 - Define functions with function
+
+#### 1.3.2 Recevoir des props
+
+
+
+### React Router 
+
+La meilleure maniere d'utiliser un Router pour React est d'utiliser le "React Router DOM".
+On l'installe. 
+
+On importe la librairie et les differents components a l'interieur de l'app.js : Router, Route, Link.
+
+On va y mettre le component "router" dans lequel on va mettre en *path="/"* les differentes routes. 
+
+

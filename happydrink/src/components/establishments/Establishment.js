@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Thumbs from '../buttons/Thumbs';
 
 class Establishment extends Component {
 
@@ -10,7 +9,6 @@ class Establishment extends Component {
                 <h3>{ this.props.establishment.name }</h3>
 
                 { this.props.establishment.description }            
-            <Thumbs/>
             </div>
         );
     }
