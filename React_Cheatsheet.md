@@ -7,6 +7,8 @@ Pre-requis VS Code:
 - ES7 React/Redux/GraphQL/React-Native snippets
 - Sublime Babel
 
+
+
 ## 0 Erreurs et autres galères 
 
 - ENOSPC, nombre de watches limités : https://github.com/gatsbyjs/gatsby/issues/11406
@@ -15,6 +17,14 @@ Pre-requis VS Code:
     cp -a <nomfolderadupliquer> <nouvelnomfolder> && cd <nouvelnomfolder>
     npm start 
 
+
+- GitHUb Pages : avoir la page github compilée avec React 
+
+1) dans package.json, insérer: "homepage": "https://becodeorg.github.io/PiloteMedia-Boeing/"
+2) se positionner sur la master branch
+3) npm run build
+4) npm run deploy (lorsque build ok)
+5) Si 4. ne fonctionne pas, faire "npm install gh-pages"
 
 ## 1.1 Initialisation et creation nouvel projet
 
@@ -29,6 +39,16 @@ Step 2 : ouvrir *src/index.js*, effacer tout le contneu et y écrire :
 et ce, afin d'importer dans le dossier les packages npm installés
 
 Pour lancer le projet : *$ npm start*
+
+
+### Installation material UI 
+
+[Doc](https://material-ui.com/getting-started/installation/)
+
+npm install @material-ui/core
+
+
+
 
 ## 1.2 Le JSX et syntaxe React
 
@@ -269,4 +289,10 @@ On importe la librairie et les differents components a l'interieur de l'app.js :
 
 On va y mettre le component "router" dans lequel on va mettre en *path="/"* les differentes routes. 
 
+https://tylermcginnis.com/react-router-route-config/
+[Getting Start with react router](https://codeburst.io/getting-started-with-react-router-5c978f70df91)
+[React Route Config](https://tylermcginnis.com/react-router-route-config/)
+[Stackoverflow](https://stackoverflow.com/questions/43026690/declaring-react-routes-in-a-separate-file-and-importing)
+
+### React Redux
 
