@@ -25,13 +25,13 @@ function Tweet({tweet}) {
 }
 
 const testTweet = {
-    message: "Something about cats.",
+    message: "ReactJS rocks the floor ! ",
     gravatar: "xyz",
     author: {
         handle: "Corneliushka",
         name: "Corneliu Gaina",
     },
-    likes: 22,
+    likes: 3,
     retweets: 5,
     timestamp: "2019-07-30 21:24:37",
 };
@@ -39,9 +39,9 @@ const testTweet = {
 function Comment({author, message,likes}) {
     return (
         <div>
-            <div className="author">{author}</div>
-            <div className="message">{message}</div>
-            <div className='likes'>
+            <div className={"author"}>{author}</div>
+            <div className={"message"}>{message}</div>
+            <div className={"likes"}>
                 {likes > 0 ? likes : 'No'}likes
             </div>
         </div>
@@ -49,25 +49,26 @@ function Comment({author, message,likes}) {
 }
 
 function Avatar({hash}) {
-    var url = `https://www.gravatar.com/avatar/${hash}`;
-    return (
-        <img 
-            src={url}
-            className="avatar"
-            alt="avatar"
-        />
-    );
+    let url = `https://www.gravatar.com/avatar/${hash}`;
+    return <img src={url} className="avatar" alt="avatar" />;
 }
 
-function NameWithHandle({ author }) {
-    const { name, handle } = author;
+function NameWithHandle({author}) {
+    const {name, handle} = author;
     return (
-        <span className="name-with-handle">
-            <span className="name">{name}</span>
-            <span className="handle">@{handle}</span>
+        <span className={"name-with-handle"}>
+            <span className={"name"}>{name}</span>
+            <span className={"handle"}>@{handle}</span>
         </span>
     );
 }
+
+NameWithHandle.propTypes = {
+    author: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        handle: PropTypes.string.isRequired,
+    }).isRequired,
+};
 
 const Time = ({ time }) => {
     const timeString = moment(time).fromNow();
@@ -78,12 +79,20 @@ const Time = ({ time }) => {
     )
 }
 
+Time.propTypes = {
+    timeString: PropTypes.number,
+}
+
 function Message({ text }) {
     return (
         <div className="message">
             { text }
         </div>
     )
+}
+
+Message.propTypes = {
+    text: PropTypes.string.isRequired,
 }
 
 function Count({count}) {
@@ -114,6 +123,10 @@ const LikeButton = ({count}) => (
             </span>}
     </span>
 );
+
+LikeButton.propTypes = {
+    count: PropTypes.number,
+};
 
 const ReplyButton = () => (
     <i className="fa fa-reply reply-button"/>
