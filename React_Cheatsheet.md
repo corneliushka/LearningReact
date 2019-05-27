@@ -55,6 +55,8 @@ npm install @material-ui/core
 
 ### 1.2.1 Le ReactDOM.render 
 
+* ReactDOM.render([React Element],[DOM element]);
+
 Le ReactDOM, va prendre 2 arguments : 
 - ce qui sera rendu (component ou element React)
 - où cela sera rendu (un element DOM réel)
@@ -278,6 +280,48 @@ Ce qu'on ne peut pas faire :
 
 #### 1.3.2 Recevoir des props
 
+
+
+### PropTypes
+
+(si pas installé: npm install --save prop-types)
+
+import PropTypes from 'prop-types';
+...
+
+Les différents sortes de PropTypes :
+- PropTypes.array
+- PropTypes.bool
+- PropTypes.func
+- PropTypes.number
+- PropTypes.object
+- ProptTypes.string
+
+Il existe l'instanceOfValidator qui check si la prop est une instance de classe spécifique, il prend un argument : 
+
+- PropTypes.instanceOf(SpecificClass)
+
+On peut spécifier les valeurs limites avec oneOf : 
+
+- PropTypes.oneOf(['person','place', 1234])
+
+On peut valider la prop comme un de quelques types :
+
+PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.boolean
+])
+
+
+### React - Children 
+
+
+- React.Children.map(children,function)
+- React.Children.forEach(children, function)
+
+- React.Children.count(children)
+- React.Children.only(children)
+- React.Children.toArray(children)
 
 
 ### React Router 

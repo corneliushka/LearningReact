@@ -21,5 +21,14 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@becode/eslint-config": "^0.4.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-unicorn": "^8.0.2",
+    "prettier": "^1.17.1"
+  }
 }
