@@ -1,6 +1,11 @@
 import React from 'react'
 
-const Contact = () => {
+const Contact = (props) => {
+    console.log(props)
+    // setTimeout(() => {
+    //    props.history.push('/about')
+    // }, 2000) 
+    // This is programmatic redirects : after 2 seconds, the user is redirected on the path (object 'history', mathod 'push' + location)
     return (
         <div className="container">
             <h4 className="center">Contact</h4>
