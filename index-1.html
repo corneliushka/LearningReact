@@ -1,0 +1,281 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Unknown </title></head><body>
+<h1 id="learning-react">Learning React</h1>
+<p>Sources :<br />
+<a href="https://www.coursera.org/learn/front-end-react/">Coursera : Learn Frontl-End React</a></p>
+<p>Pre-requis VS Code: 
+- ES7 React/Redux/GraphQL/React-Native snippets
+- Sublime Babel</p>
+<h2 id="0-erreurs-et-autres-galeres">0 Erreurs et autres galères</h2>
+<ul>
+<li>
+<p>ENOSPC, nombre de watches limités : https://github.com/gatsbyjs/gatsby/issues/11406</p>
+</li>
+<li>
+<p>Pour faire une copie d'un folder pour bosser dedans, se mettre un niveau de folder au-dessus (parent) et exécuter dans le terminal : 
+    cp -a <nomfolderadupliquer> <nouvelnomfolder> &amp;&amp; cd <nouvelnomfolder>
+    npm start </p>
+</li>
+<li>
+<p>GitHUb Pages : avoir la page github compilée avec React </p>
+</li>
+</ul>
+<p>1) dans package.json, insérer: "homepage": "https://becodeorg.github.io/PiloteMedia-Boeing/"
+2) se positionner sur la master branch
+3) npm run build
+4) npm run deploy (lorsque build ok)
+5) Si 4. ne fonctionne pas, faire "npm install gh-pages"</p>
+<h2 id="11-initialisation-et-creation-nouvel-projet">1.1 Initialisation et creation nouvel projet</h2>
+<p>Stephings to install before using React (in folder) : 
+-  (install create react app) npm install -g create-react-app</p>
+<p>Step 1 : <em>create-react-app <name-app></em> pour générer un nouvel projet, nettoyer le dossier si nécessaire (rm src/App.* src/index.css src/logo.svg).</p>
+<p>Step 2 : ouvrir <em>src/index.js</em>, effacer tout le contneu et y écrire :
+<em>import React from 'react';</em>
+<em>import ReactDOM from 'react-dom';</em>
+et ce, afin d'importer dans le dossier les packages npm installés</p>
+<p>Pour lancer le projet : <em>$ npm start</em></p>
+<h3 id="installation-material-ui">Installation material UI</h3>
+<p><a href="https://material-ui.com/getting-started/installation/">Doc</a></p>
+<p>npm install @material-ui/core</p>
+<h2 id="12-le-jsx-et-syntaxe-react">1.2 Le JSX et syntaxe React</h2>
+<h3 id="121-le-reactdomrender">1.2.1 Le ReactDOM.render</h3>
+<ul>
+<li>ReactDOM.render([React Element],[DOM element]);</li>
+</ul>
+<p>Le ReactDOM, va prendre 2 arguments : 
+- ce qui sera rendu (component ou element React)
+- où cela sera rendu (un element DOM réel)</p>
+<p>Pour les components : nous avons les ES6 classes et les React.createClass (deprecated).</p>
+<h3 id="122-jsx-quoi-et-pourquoi">1.2.2 JSX Quoi et Pourquoi</h3>
+<p>JSX est la syntaxe inventé par React, c'est comme du HTML mais compilé en vrai Javascript, grâce à un outil appellé <strong>Babel</strong>, qui va transformer le code en ES5 valide pour les browsers. 
+Chaque élément JSX devient un appel de fonction, où ses arguments sont ses attributs ("props") et son contenu ("children").</p>
+<p>L'autre penchant de l'écriture en React est la signature en fonction React.createElement :</p>
+<pre><code>React.createElement(
+    element|string,
+    [propsObject],
+    [children...]
+)
+</code></pre>
+<ul>
+<li><em>element|string</em> décrivent le tag HTML</li>
+<li><em>propsObject</em> et <em>children</em> sont optionnels.</li>
+</ul>
+<p>On peut penser que combiner la vue et la logique peut donner un code confus, et il peut être vrai. 
+Mais le pattern de React avec la construction en <em>components</em> prévient cela. </p>
+<h4 id="comparaisons-jsx-et-sa-compilation-en-js-avec-babel">Comparaisons JSX et sa compilation en JS avec Babel</h4>
+<p>La </p>
+<p>EX 1 :
+    return <span>Hello!</span>;   </p>
+<pre><code>↓
+
+return React.createElement(
+    'span',
+    {},
+    'Hello!'
+);
+</code></pre>
+<p>EX 2 : 
+    <span className='song-name'>
+        {props.song.name}
+    </span></p>
+<pre><code>↓
+
+React.createElement(
+    'span',
+    { className: 'song-name' },
+    props.song.name
+);
+</code></pre>
+<p>La convention parmi la communauté des développeurs est d'écrire en JSX. Ecrire en React.createElement n'est pas une approche commune. </p>
+<h3 id="123-travailler-avec-le-jsx">1.2.3 Travailler avec le JSX</h3>
+<h4 id="composer-les-components">Composer les components</h4>
+<p>Maintenant nous pouvons au sein du même fichier .js créer plusieurs components internes : </p>
+<pre><code>function Hello() {
+return &lt;span&gt;Hello&lt;/span&gt;;
+}
+
+function World() {
+return &lt;span&gt;World&lt;/span&gt;;
+}
+</code></pre>
+<p>Et les inclure dans notre component principal HelloWorld() : </p>
+<pre><code>function HelloWorld() {
+    return (
+        &lt;div&gt;
+            &lt;Hello/&gt; &lt;World/&gt; !
+        &lt;/div&gt;
+    )
+}
+</code></pre>
+<ul>
+<li>Une fonction component doit retourner un seul élément. </li>
+</ul>
+<h4 id="le-javascript-dans-jsx">Le JavaScript dans JSX</h4>
+<p>On peut insérer des réelles expressions .js dans le code JSX. Cela ressemble à cela : </p>
+<pre><code>    function SubmitButton() {
+        var buttonLabel = "Submit";
+        return (
+            &lt;button&gt;{buttonLabel}&lt;/button&gt;
+        );
+    }
+</code></pre>
+<p>A ne pas oublier que cela sera compilé dans le Javascript, et que le JS doit avoir une expression a l'intérieur qui produit une valeur. Les déclarations ne produisent pas de valeur et ne peuvent être utilisées dans le JSX. </p>
+<p>Exemples d'expressions:
+    1 + 2
+    buttonLabel
+    aFunctionCall()
+    aFunctionName</p>
+<p>Exemples de déclarations:
+    var a = 5
+    if(true) { 17;}
+    while(i &lt; 7) { i++ }</p>
+<p><strong>Alors commment utiliser le "If" dans JSX ?</strong></p>
+<ul>
+<li>
+<p>Tout d'abord on a les opérations ternaires :</p>
+<p>function ValidIndicator() {
+    var isValid = true;
+    return (
+        <span>
+            {isValid ? 'valid' : 'not valid'} 
+        </span>
+    )
+}</p>
+</li>
+<li>
+<p>Ensuite on a les opérateurs booléens tels que &amp;&amp; : </p>
+<p>function ValidIndicator() {
+    var isValid = true;
+    return (
+        <span>
+            {isValid &amp;&amp; 'valid'}
+            {!isValid &amp;&amp; 'not valid'}
+        </span>
+    );
+}</p>
+</li>
+</ul>
+<p><strong>Commentaires dans JSX</strong></p>
+<p>Il faut les mettres dans un block JSX, tel que : </p>
+<pre><code>function ValidIndicator() {
+    var isValid = true;
+    return (
+        &lt;span&gt;
+            {/* voici un commentaire*/}
+            {isValid &amp;&amp; 'valid'}
+            {!isValid &amp;&amp; 'not valid'}
+            {
+                // on peut faire ceci pour
+                // le multi lignes
+            }
+        &lt;/span&gt;
+    );
+}
+</code></pre>
+<p><strong>Capitaliser les noms des components</strong></p>
+<p>Les componenets doivent commencer par une majuscule.
+EX :
+    UserList
+    Menu
+    SubmitButton
+    ...</p>
+<p>En JSX les componenets en minuscules sont des éléments l'HTML ou SVG.</p>
+<h3 id="13-creation-dun-component">1.3 Création d'un component</h3>
+<p>Lorsqu'on parle de la hiérarchie des components, procède-t-on Top-Down ou Bottom-Up ? </p>
+<p>Pour les petits projets (lorsqu'un parent a quelques enfants) c'est l'approche Top-Down à privilégier car le plus facile.</p>
+<p>Pour les projets plus complexes, faire du Bottom-Up car permet de tester au fur et à mesure ses components s'ils sont réactifs. Par induction, leur combinaison fait grossir le projet. </p>
+<!-- Quand vous construisez un component, posez-vous ces questions :
+
+- [ ] Ma variable m’est passée par mon parent via les props ? Ne la mettez pas dans le state
+
+- [ ] Ma variable peut être créée à partir d’autres variables du state ou des props ? Ne la mettez pas dans le state
+
+- [ ] Ma variable ne remplie aucun des cas ci-dessus ? Alors sa place est surement dans le state
+ -->
+
+<p>Le .CSS qu'on importe dans un fichier parent peut etre visible dans la console -&gt; elements -&gt; dans la balise <head> il y a <style></style> (vite, mais index.css est appelé dedans).</p>
+<h3 id="13-props-arguments-to-components">1.3 Props - Arguments to Components</h3>
+<p>Si le HTMl a ses attributs, les components React ont des props (= propriétés). 
+Des components React peuvent être écrits en fonctions. C'est donc naturel de penser qu'on peut penser des arguments à ces fonctions. 
+Les <strong>props</strong> sont des <em>arguments</em> / <em>parametres</em> que l'on passe a d'autres componenets. 
+Basiquement, l'esprit de React est de casser les choses en morceaux, cad en components, et de les utiliser quand l'on en a besoin. 
+Les props sont des caractéristiques définies que contiennent les components et elles sont accessibles ou envoyées lorsque requises.
+Les datas des props peuvent être de différentes natures : strings, fonctions, tableaux. </p>
+<h4 id="131-passer-des-props">1.3.1 Passer des props</h4>
+<ul>
+<li>
+<p>On passe un props appellé <em>name</em> avec la valeur string "Dave"
+    <Person name='Dave'/></p>
+</li>
+<li>
+<p>On passe un props <em>className</em> avec la valeur "person"</p>
+<div className='person'/>
+
+</li>
+</ul>
+<p>Les div sont auto-fermantes, chaque component peut etre auto-fermant, si'il n'a pas d'enfants. </p>
+<p>Il est important de se rappeller que dans JS les brackets sont une expression, par une déclaration. Voici ce qu'on peut faire à l'intérieur des expressions JSX : </p>
+<ul>
+<li>Math, concatenation: {7 + 5} or {'Your' + 'Name'}</li>
+<li>Function calls: {this.getFullName(person)}</li>
+<li>Ternary (?) operator: {name === 'Dave' ? 'me' : 'not me'}</li>
+<li>Boolean expressions: {isEnabled &amp;&amp; 'enabled'}</li>
+</ul>
+<p>Ce qu'on ne peut pas faire : </p>
+<ul>
+<li>Define new variables with var</li>
+<li>Use if, for, while, etc.</li>
+<li>Define functions with function</li>
+</ul>
+<h4 id="132-recevoir-des-props">1.3.2 Recevoir des props</h4>
+<h3 id="proptypes">PropTypes</h3>
+<p>(si pas installé: npm install --save prop-types)</p>
+<p>import PropTypes from 'prop-types';
+...</p>
+<p>Les différents sortes de PropTypes :
+- PropTypes.array
+- PropTypes.bool
+- PropTypes.func
+- PropTypes.number
+- PropTypes.object
+- ProptTypes.string</p>
+<p>Il existe l'instanceOfValidator qui check si la prop est une instance de classe spécifique, il prend un argument : </p>
+<ul>
+<li>PropTypes.instanceOf(SpecificClass)</li>
+</ul>
+<p>On peut spécifier les valeurs limites avec oneOf : </p>
+<ul>
+<li>PropTypes.oneOf(['person','place', 1234])</li>
+</ul>
+<p>On peut valider la prop comme un de quelques types :</p>
+<p>PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.boolean
+])</p>
+<h3 id="react-children">React - Children</h3>
+<ul>
+<li>React.Children.map(children,function)</li>
+<li>
+<p>React.Children.forEach(children, function)</p>
+</li>
+<li>
+<p>React.Children.count(children)</p>
+</li>
+<li>React.Children.only(children)</li>
+<li>React.Children.toArray(children)</li>
+</ul>
+<h3 id="react-router">React Router</h3>
+<p>La meilleure maniere d'utiliser un Router pour React est d'utiliser le "React Router DOM".
+On l'installe. </p>
+<p>On importe la librairie et les differents components a l'interieur de l'app.js : Router, Route, Link.</p>
+<p>On va y mettre le component "router" dans lequel on va mettre en <em>path="/"</em> les differentes routes. </p>
+<p>https://tylermcginnis.com/react-router-route-config/
+<a href="https://codeburst.io/getting-started-with-react-router-5c978f70df91">Getting Start with react router</a>
+<a href="https://tylermcginnis.com/react-router-route-config/">React Route Config</a>
+<a href="https://stackoverflow.com/questions/43026690/declaring-react-routes-in-a-separate-file-and-importing">Stackoverflow</a></p>
+<h3 id="materialize-css">Materialize CSS</h3>
+<pre><code>from [MaterializeCSS.com](https://materializecss.com/getting-started.html)
+&lt;!-- Compiled and minified CSS --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"&gt;
+</code></pre>
+<h3 id="react-redux">React Redux</h3>
+</body></html>

@@ -338,5 +338,15 @@ https://tylermcginnis.com/react-router-route-config/
 [React Route Config](https://tylermcginnis.com/react-router-route-config/)
 [Stackoverflow](https://stackoverflow.com/questions/43026690/declaring-react-routes-in-a-separate-file-and-importing)
 
+### Materialize CSS
+    from [MaterializeCSS.com](https://materializecss.com/getting-started.html)
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+### React Axios 
+
+[Fake Data JSON](https://jsonplaceholder.typicode.com/)
+
+
 ### React Redux
 
