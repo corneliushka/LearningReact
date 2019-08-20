@@ -1,14 +1,11 @@
-// entry point for Redux
+// 1. entry point for Redux
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import rootReducer from './reducers/todos';
-
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import App from './components/App'
+import rootReducer from './reducers'
 
 const store = createStore(rootReducer)
 
