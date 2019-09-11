@@ -10,4 +10,5 @@ A repository to learning React (hooks, mini-projects with advanced tricks) and r
 - gatsby (coming)
 - storybook (coming)
 - react virtualized (coming) 
-- styled components
+- styled components (coming)
+- react-motion (coming) / react-spring (coming)
