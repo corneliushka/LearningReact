@@ -13,7 +13,7 @@ function MyDropzone() {
         const binaryStr = reader.result
         console.log(binaryStr)
 
-        axios.post('https://back.referoo.org/file/upload/pdf', {
+        axios.post('https://back.../upload/pdf', {
             headers: { 'Content-Type': 'application/pdf'}
         })
             .then(function (rep) {
