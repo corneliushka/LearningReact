@@ -1,53 +1,117 @@
 import React, { Component } from 'react';
 
 import Select from 'react-select';
-import { colourOptions,  } from '../data/data';
-import makeAnimated from 'react-select/animated';
+// import { colourOptions, stateOptions  } from '../data/data';
+// import makeAnimated from 'react-select/animated';
 
-import { Badge } from 'reactstrap' 
+// import Axios from 'axios'
+
+import TooltipBadge from './TooltipBadge';
+
 
 // TEST #1 - import the tooltipbadge here + render select with Label
 
-const animatedComponents = makeAnimated();
+// const animatedComponents = makeAnimated();
 
 
-const renderBadge = function 
+
+const Option = ( props ) => {
+    return (
+        <div>
+            <div id="ItemID">{this.props.}</div>
+            <TooltipBadge/>
+        </div>
+    )
+}
+
+const stateOptions = [
+    { value: 'AL', label: 'Alabama' },
+    { value: 'AK', label: 'Alaska' },
+    { value: 'AS', label: 'American Samoa' },
+    { value: 'AZ', label: 'Arizona' },
+    { value: 'AR', label: 'Arkansas' },
+    { value: 'CA', label: 'California' },
+    { value: 'CO', label: 'Colorado' },
+    { value: 'CT', label: 'Connecticut' },
+    { value: 'DE', label: 'Delaware' },
+    { value: 'DC', label: 'District Of Columbia' },
+    { value: 'FM', label: 'Federated States Of Micronesia' },
+    { value: 'FL', label: 'Florida' },
+    { value: 'GA', label: 'Georgia' },
+    { value: 'GU', label: 'Guam' },
+    { value: 'HI', label: 'Hawaii' },
+    { value: 'ID', label: 'Idaho' },
+    { value: 'IL', label: 'Illinois' },
+    { value: 'IN', label: 'Indiana' },
+    { value: 'IA', label: 'Iowa' },
+    { value: 'KS', label: 'Kansas' },
+    { value: 'KY', label: 'Kentucky' },
+    { value: 'LA', label: 'Louisiana' },
+    { value: 'ME', label: 'Maine' },
+    { value: 'MH', label: 'Marshall Islands' },
+    { value: 'MD', label: 'Maryland' },
+    { value: 'MA', label: 'Massachusetts' },
+    { value: 'MI', label: 'Michigan' },
+    { value: 'MN', label: 'Minnesota' },
+    { value: 'MS', label: 'Mississippi' },
+    { value: 'MO', label: 'Missouri' },
+    { value: 'MT', label: 'Montana' },
+    { value: 'NE', label: 'Nebraska' },
+    { value: 'NV', label: 'Nevada' },
+    { value: 'NH', label: 'New Hampshire' },
+    { value: 'NJ', label: 'New Jersey' },
+    { value: 'NM', label: 'New Mexico' },
+    { value: 'NY', label: 'New York' },
+    { value: 'NC', label: 'North Carolina' },
+    { value: 'ND', label: 'North Dakota' },
+    { value: 'MP', label: 'Northern Mariana Islands' },
+    { value: 'OH', label: 'Ohio' },
+    { value: 'OK', label: 'Oklahoma' },
+    { value: 'OR', label: 'Oregon' },
+    { value: 'PW', label: 'Palau' },
+    { value: 'PA', label: 'Pennsylvania' },
+    { value: 'PR', label: 'Puerto Rico' },
+    { value: 'RI', label: 'Rhode Island' },
+    { value: 'SC', label: 'South Carolina' },
+    { value: 'SD', label: 'South Dakota' },
+    { value: 'TN', label: 'Tennessee' },
+    { value: 'TX', label: 'Texas' },
+    { value: 'UT', label: 'Utah' },
+    { value: 'VT', label: 'Vermont' },
+    { value: 'VI', label: 'Virgin Islands' },
+    { value: 'VA', label: 'Virginia' },
+    { value: 'WA', label: 'Washington' },
+    { value: 'WV', label: 'West Virginia' },
+    { value: 'WI', label: 'Wisconsin' },
+    { value: 'WY', label: 'Wyoming' },
+];
 
 class SelectComponent extends Component {
     state = {
         isClearable: true,
         isDisabled: false,
-        isLoading: false,
-        isRtl: false,
         isSearchable: false,
-    };
-
-
-    
+    }
 
     render() {
         const {
             isClearable,
             isSearchable,
-            isDisabled,
-            isLoading,
-            isRtl,
+            isDisabled
         } = this.state;
         return (
             <Select
                 className="basic-single"
                 classNamePrefix="select"
-                components={animatedComponents}
-                defaultValue={colourOptions[0]}
+                options={stateOptions}
+                components={{ Option }}
+                // components={animatedComponents}
                 isDisabled={isDisabled}
-                isLoading={isLoading}
                 isClearable={isClearable}
-                isRtl={isRtl}
                 isSearchable={isSearchable}
                 name="color"
                 isMulti
                 closeMenuOnSelect={false}
-                options={colourOptions}
             />
         )
     }

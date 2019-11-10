@@ -14,13 +14,7 @@ function App() {
         <div></div>
         <SelectComponent />
       </div>
-        <br></br>
-      <div>
-        Second Select Component : 
-        <br></br>
 
-        
-      </div>
     </div>
   );
 }
